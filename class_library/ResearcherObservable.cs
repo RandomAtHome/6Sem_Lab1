@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace class_library
 {
-    class ResearcherObservable : System.Collections.ObjectModel.ObservableCollection<Project>
+    public class ResearcherObservable : System.Collections.ObjectModel.ObservableCollection<Project>
     {
         public string Name { get; set; }
         public string Surname { get; set; }

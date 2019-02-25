@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using class_library;
 
 namespace wpf_gui
 {
@@ -20,9 +21,15 @@ namespace wpf_gui
     /// </summary>
     public partial class MainWindow : Window
     {
+        ResearcherObservable researcher;
+        public string Str { get; set; }
+        public ResearcherObservable Researcher { get => researcher; set => researcher = value; }
+
         public MainWindow()
         {
             InitializeComponent();
+            this.researcher = new ResearcherObservable("James");
+            this.DataContext = researcher;
         }
     }
 }

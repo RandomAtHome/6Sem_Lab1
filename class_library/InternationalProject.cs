@@ -2,7 +2,7 @@
 
 namespace class_library
 {
-    class InternationalProject : Project, IComparable<InternationalProject>
+    public class InternationalProject : Project, IComparable<InternationalProject>
     {
         public string country_host { set; get; }
         public int participant_count { set; get; }
