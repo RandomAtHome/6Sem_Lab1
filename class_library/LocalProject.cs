@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lab1_v4
+namespace class_library
 {
     public class LocalProject : Project
     {

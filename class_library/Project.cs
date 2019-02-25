@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lab1_v4
+namespace class_library
 {
     public enum ProjectType { Applied, Fundamental };
     public class Project : IComparable<Project>
