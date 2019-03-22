@@ -27,9 +27,18 @@
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Experience}"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding InternationalPercent, Mode=OneWay}"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding HasChanged}"/>
+            <RadioButton Content="Use DataTemplate"
+                         GroupName="AllProjectsTemplate"
+                         Checked="RadioButton_Checked" IsChecked="True"/>
+            <RadioButton Content="Don't Use DataTemplate"
+                         GroupName="AllProjectsTemplate"
+                         Checked="RadioButton_Checked"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="400" Margin="225,10,0,0" VerticalAlignment="Top" Width="210">
-            <ListBox Height="200" ItemsSource="{Binding Mode=OneWay}"/>
+            <ListBox Height="200"
+                     x:Name="allProjectsLBox"
+                     ItemsSource="{Binding Mode=OneWay}"
+                     ItemTemplate="{DynamicResource key_project_DataTemplate}"/>
             <ListBox Height="200"/>
         </StackPanel>
         <StackPanel Margin="440,10,142,10"/>

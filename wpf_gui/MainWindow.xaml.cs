@@ -21,17 +21,27 @@ namespace wpf_gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        ResearcherObservable researcher;
-        public ResearcherObservable Researcher { get => researcher; set => researcher = value; }
+        public ResearcherObservable Researcher { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            researcher = new ResearcherObservable("James", "Hopkins", 1.0);
-            this.DataContext = researcher;
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultLocalProject();
-            researcher.AddDefaultInternationalProject();
+            Researcher = new ResearcherObservable("James", "Hopkins", 1.0);
+            this.DataContext = Researcher;
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!(allProjectsLBox is null) && this.TryFindResource("key_project_DataTemplate") is DataTemplate dataTemplate)
+            {
+                if (allProjectsLBox.ItemTemplate == null)
+                    allProjectsLBox.ItemTemplate = dataTemplate;
+                else
+                    allProjectsLBox.ItemTemplate = null;
+            }
         }
     }
 }

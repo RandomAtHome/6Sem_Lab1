@@ -44,12 +44,12 @@ namespace class_library
 
         public bool AddDefaultLocalProject()
         {
-            Items.Add(new LocalProject());
+            Items.Add(new LocalProject("Loc. Default"));
             return true;
         }
         public bool AddDefaultInternationalProject()
         {
-            Items.Add(new InternationalProject());
+            Items.Add(new InternationalProject("Int. Default"));
             return true;
         }
         public bool AddCustomInternationalProject(InternationalProject project)
