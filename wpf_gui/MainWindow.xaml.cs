@@ -22,13 +22,12 @@ namespace wpf_gui
     public partial class MainWindow : Window
     {
         ResearcherObservable researcher;
-        public string Str { get; set; }
         public ResearcherObservable Researcher { get => researcher; set => researcher = value; }
 
         public MainWindow()
         {
             InitializeComponent();
-            this.researcher = new ResearcherObservable("James");
+            this.researcher = new ResearcherObservable("James", "Hopkins", 1.0);
             this.DataContext = researcher;
         }
     }

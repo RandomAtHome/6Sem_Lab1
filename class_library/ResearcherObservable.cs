@@ -21,7 +21,6 @@ namespace class_library
             }
         }
         public bool HasChanged { get; set; }
-        
         public bool Remove_At(int index)
         {
             try {
@@ -32,6 +31,17 @@ namespace class_library
             }
             return false;
         }
+        public ResearcherObservable(string name = "", string surname = "", double experience = 0.0) 
+        {
+            Name = name;
+            Surname = surname;
+            Experience = experience;
+            HasChanged = false;
+        }
+
+        public ResearcherObservable() : this("", "", 0.0)
+        {}
+
         public bool AddDefaultLocalProject()
         {
             Items.Add(new LocalProject());
@@ -51,14 +61,6 @@ namespace class_library
         {
             throw new NotImplementedException();
             return base.ToString();
-        }
-
-        public ResearcherObservable(string name = "", string surname = "", double experience = 0.0)
-        {
-            Name = name;
-            Surname = surname;
-            Experience = experience;
-            HasChanged = false;
         }
     }
 }
