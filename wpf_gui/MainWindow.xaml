@@ -21,7 +21,7 @@
         <classes:ResearcherObservable/>
     </Window.DataContext>
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
+        <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Name}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Surname}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Experience}"/>
@@ -34,14 +34,11 @@
                          GroupName="AllProjectsTemplate"
                          Checked="RadioButton_Checked"/>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="400" Margin="225,10,0,0" VerticalAlignment="Top" Width="210">
-            <ListBox Height="200"
+        <ListBox
                      x:Name="allProjectsLBox"
                      ItemsSource="{Binding Mode=OneWay}"
-                     ItemTemplate="{DynamicResource key_project_DataTemplate}"/>
-            <ListBox Height="200"/>
-        </StackPanel>
-        <StackPanel Margin="440,10,142,10"/>
+                     ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="200" Margin="225,10,357,0"
+            />
 
     </Grid>
 </Window>

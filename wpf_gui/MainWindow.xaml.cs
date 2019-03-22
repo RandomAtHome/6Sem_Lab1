@@ -31,6 +31,12 @@ namespace wpf_gui
             Researcher.AddDefaultInternationalProject();
             Researcher.AddDefaultLocalProject();
             Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
