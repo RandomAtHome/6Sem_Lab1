@@ -27,8 +27,11 @@ namespace wpf_gui
         public MainWindow()
         {
             InitializeComponent();
-            this.researcher = new ResearcherObservable("James", "Hopkins", 1.0);
+            researcher = new ResearcherObservable("James", "Hopkins", 1.0);
             this.DataContext = researcher;
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultLocalProject();
+            researcher.AddDefaultInternationalProject();
         }
     }
 }

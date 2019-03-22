@@ -9,6 +9,14 @@
         x:Class="wpf_gui.MainWindow"
         mc:Ignorable="d"
         Title="Lab Work #1" Height="450" Width="800">
+    <Window.Resources>
+        <local:ProjectConverter x:Key="key_ProjectConverter"/>
+        <local:LocalProjectConverter x:Key="key_LocalProjectConverter"/>
+        <DataTemplate x:Key="key_project_DataTemplate">
+            <TextBlock Text="{Binding Converter={StaticResource key_ProjectConverter}}"/>
+        </DataTemplate>
+
+    </Window.Resources>
     <Window.DataContext>
         <classes:ResearcherObservable/>
     </Window.DataContext>
@@ -21,11 +29,10 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding HasChanged}"/>
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="400" Margin="225,10,0,0" VerticalAlignment="Top" Width="210">
-            <ListBox Height="100"/>
+            <ListBox Height="200" ItemsSource="{Binding Mode=OneWay}"/>
+            <ListBox Height="200"/>
         </StackPanel>
-        <StackPanel Margin="440,10,142,10">
-            <ListBox Height="100" SelectionChanged="ListBox_SelectionChanged"/>
-        </StackPanel>
+        <StackPanel Margin="440,10,142,10"/>
 
     </Grid>
 </Window>
