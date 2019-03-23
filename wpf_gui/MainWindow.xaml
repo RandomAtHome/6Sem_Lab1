@@ -19,8 +19,8 @@
         <DataTemplate x:Key="key_local_project_DataTemplate">
             <TextBlock Text="{Binding Converter={StaticResource key_LocalProjectConverter}}"/>
         </DataTemplate>
-        <CollectionViewSource Source="{Binding Source={StaticResource key_MainDataSource}}"
-                              x:Key="key_local_project_view" Filter="IsLocalProject"/>
+        <CollectionViewSource Source="{Binding}"
+                              x:Key="key_local_project_view"/>
 
     </Window.Resources>
     <Window.DataContext>
@@ -46,11 +46,18 @@
                      ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="200" Margin="225,10,357,0"
             />
         <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="230" Margin="440,10,0,0" VerticalAlignment="Top" Width="210">
-            <ListBox x:Name="LocalListBox" 
-                HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Source={StaticResource key_local_project_view}}"/>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-            <TextBlock TextWrapping="Wrap" Text="TextBlock" Height="24"/>
+            <ListBox x:Name="LocalListBox"
+                     HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210"
+                     ItemsSource="{Binding Source={StaticResource key_local_project_view}}"
+                     IsSynchronizedWithCurrentItem="True"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"
+                       Text="{Binding ElementName=LocalListBox, Path=SelectedItem.duration}"
+                       VerticalAlignment="Top"/>
+            <TextBlock TextWrapping="Wrap"
+                       Text="{Binding ElementName=LocalListBox, Path=SelectedItem.Date}"
+                       Height="24"/>
         </StackPanel>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="261,224,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>

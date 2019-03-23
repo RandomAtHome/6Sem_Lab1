@@ -36,8 +36,8 @@ namespace wpf_gui
             Researcher.AddDefaultInternationalProject();
             Researcher.AddDefaultLocalProject();
             Researcher.AddDefaultInternationalProject();
-            //ListCollectionView listCollectionView = new ListCollectionView(Researcher);
-            //listCollectionView.Filter = item => { return true; };
+            //ListCollectionView listCollectionView = Resources["key_local_project_view"] as ListCollectionView;
+            //listCollectionView.Filter = item => { return item != null && item is LocalProject; };
             //LocalListBox.ItemsSource = listCollectionView;
 
         }
@@ -46,16 +46,22 @@ namespace wpf_gui
         {
             if (!(allProjectsLBox is null) && this.TryFindResource("key_project_DataTemplate") is DataTemplate dataTemplate)
             {
-                if (allProjectsLBox.ItemTemplate == null)
-                    allProjectsLBox.ItemTemplate = dataTemplate;
-                else
-                    allProjectsLBox.ItemTemplate = null;
+                allProjectsLBox.ItemTemplate = allProjectsLBox.ItemTemplate == null ? dataTemplate : null;
             }
         }
 
         private void IsLocalProject(object sender, FilterEventArgs args)
         {
-            args.Accepted = true;
+            Project proj = args.Item as Project;
+            if (proj != null)
+            {
+                args.Accepted = proj is LocalProject ? true : false;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Researcher.AddDefaultLocalProject();
         }
     }
 }
