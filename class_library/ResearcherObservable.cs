@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace class_library
 {
-    public class ResearcherObservable : System.Collections.ObjectModel.ObservableCollection<Project>
+    public class ResearcherObservable : System.Collections.ObjectModel.ObservableCollection<Project>, INotifyPropertyChanged
     {
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,16 +27,6 @@ namespace wpf_gui
         public MainWindow()
         {
             InitializeComponent();
-            Researcher = FindResource("key_MainDataSource") as ResearcherObservable;
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
             //ListCollectionView listCollectionView = Resources["key_local_project_view"] as ListCollectionView;
             //listCollectionView.Filter = item => { return item != null && item is LocalProject; };
             //LocalListBox.ItemsSource = listCollectionView;
@@ -50,7 +41,7 @@ namespace wpf_gui
             }
         }
 
-        private void IsLocalProject(object sender, FilterEventArgs args)
+        void IsLocalProject(object sender, FilterEventArgs args)
         {
             Project proj = args.Item as Project;
             if (proj != null)
@@ -62,6 +53,30 @@ namespace wpf_gui
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Researcher.AddDefaultLocalProject();
+            //(Resources["key_local_project_view"] as CollectionViewSource).View.Refresh();
+        }
+
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs args)
+        {
+            Project proj = args.Item as Project;
+            if (proj != null)
+            {
+                args.Accepted = proj is InternationalProject ? true : false;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Researcher = FindResource("key_MainDataSource") as ResearcherObservable;
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultInternationalProject();
+            Researcher.AddDefaultLocalProject();
+            Researcher.AddDefaultInternationalProject();
         }
     }
 }
