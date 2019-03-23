@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         Title="Lab Work #1" Height="450" Width="800">
     <Window.Resources>
+        <classes:ResearcherObservable x:Key="key_MainDataSource"/>
         <local:ProjectConverter x:Key="key_ProjectConverter"/>
         <local:LocalProjectConverter x:Key="key_LocalProjectConverter"/>
         <DataTemplate x:Key="key_project_DataTemplate">
@@ -18,10 +19,12 @@
         <DataTemplate x:Key="key_local_project_DataTemplate">
             <TextBlock Text="{Binding Converter={StaticResource key_LocalProjectConverter}}"/>
         </DataTemplate>
+        <CollectionViewSource Source="{Binding Source={StaticResource key_MainDataSource}}"
+                              x:Key="key_local_project_view" Filter="IsLocalProject"/>
 
     </Window.Resources>
     <Window.DataContext>
-        <classes:ResearcherObservable/>
+        <Binding Source="{StaticResource key_MainDataSource}"/>
     </Window.DataContext>
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
@@ -43,7 +46,8 @@
                      ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="200" Margin="225,10,357,0"
             />
         <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="230" Margin="440,10,0,0" VerticalAlignment="Top" Width="210">
-            <ListBox HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210"/>
+            <ListBox x:Name="LocalListBox" 
+                HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210" ItemsSource="{Binding Source={StaticResource key_local_project_view}}"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
             <TextBlock TextWrapping="Wrap" Text="TextBlock" Height="24"/>
         </StackPanel>

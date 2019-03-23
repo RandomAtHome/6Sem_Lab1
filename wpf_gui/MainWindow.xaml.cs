@@ -26,8 +26,7 @@ namespace wpf_gui
         public MainWindow()
         {
             InitializeComponent();
-            Researcher = new ResearcherObservable("James", "Hopkins", 1.0);
-            this.DataContext = Researcher;
+            Researcher = FindResource("key_MainDataSource") as ResearcherObservable;
             Researcher.AddDefaultInternationalProject();
             Researcher.AddDefaultLocalProject();
             Researcher.AddDefaultInternationalProject();
@@ -37,6 +36,10 @@ namespace wpf_gui
             Researcher.AddDefaultInternationalProject();
             Researcher.AddDefaultLocalProject();
             Researcher.AddDefaultInternationalProject();
+            //ListCollectionView listCollectionView = new ListCollectionView(Researcher);
+            //listCollectionView.Filter = item => { return true; };
+            //LocalListBox.ItemsSource = listCollectionView;
+
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -48,6 +51,11 @@ namespace wpf_gui
                 else
                     allProjectsLBox.ItemTemplate = null;
             }
+        }
+
+        private void IsLocalProject(object sender, FilterEventArgs args)
+        {
+            args.Accepted = true;
         }
     }
 }
