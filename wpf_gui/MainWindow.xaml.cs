@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,7 @@ namespace wpf_gui
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             researcher = FindResource("key_MainDataSource") as ResearcherObservable;
+            CountryPicker.DataContext = GetListOfCountries();
             researcher.AddDefaultInternationalProject();
             researcher.AddDefaultLocalProject();
             researcher.AddDefaultInternationalProject();
@@ -74,6 +76,21 @@ namespace wpf_gui
             researcher.AddDefaultInternationalProject();
             researcher.AddDefaultLocalProject();
             researcher.AddDefaultInternationalProject();
+        }
+
+        private List<string> GetListOfCountries()
+        {
+            List<string> result = new List<string>();
+            foreach (var country in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
+            {
+                RegionInfo region = new RegionInfo(country.LCID);
+                if (!result.Contains(region.DisplayName))
+                {
+                    result.Add(region.DisplayName);
+                }
+            }
+            result.Sort();
+            return result;
         }
     }
 }

@@ -64,9 +64,16 @@
                 ItemsSource="{Binding Source={StaticResource key_international_project_view}}"
                 IsSynchronizedWithCurrentItem="True" Margin="435,10,0,0"/>
         <Grid Margin="10,223,572,207" >
-            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" RenderTransformOrigin="0.967,1.087" Width="210"/>
-            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Width="210" Margin="0,23,0,0"/>
-            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="0,47,0,0" ItemsSource="{Binding Mode=OneWay}">
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"
+                     Text="{Binding Path=Theme, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
+                     VerticalAlignment="Top" RenderTransformOrigin="0.967,1.087" Width="200"/>
+            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top"
+                        HorizontalContentAlignment="Left" Width="200" Margin="0,23,0,0"
+                        SelectedDate="{Binding Path=Date, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
+                        FirstDayOfWeek="Monday"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,47,0,0"
+                      ItemsSource="{Binding Mode=OneWay}"
+                      SelectedItem="{Binding Path=Type, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}" SelectedIndex="0">
                 <ComboBox.DataContext>
                     <ObjectDataProvider MethodName="GetValues"
                             ObjectType="{x:Type sys:Enum}">
@@ -76,10 +83,12 @@
                     </ObjectDataProvider>
                 </ComboBox.DataContext>
             </ComboBox>
-            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="0,69,0,0"/>
-            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Margin="0,91,0,0" HorizontalAlignment="Left" Width="210"/>
+            <ComboBox x:Name="CountryPicker" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,69,0,0"
+                      ItemsSource="{Binding}"
+                      SelectedItem="{Binding Path=country_host, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=participant_count, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
+                     VerticalAlignment="Top" Margin="0,91,0,0" HorizontalAlignment="Left" Width="200"/>
 
         </Grid>
-
     </Grid>
 </Window>
