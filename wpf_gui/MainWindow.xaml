@@ -8,7 +8,7 @@
         xmlns:Properties="clr-namespace:wpf_gui.Properties"
         x:Class="wpf_gui.MainWindow"
         mc:Ignorable="d"
-        Title="Lab Work #1" Height="450" Width="800"
+        Title="Lab Work #1" Height="600" Width="800"
         Loaded="Window_Loaded"
         DataContext="{DynamicResource key_MainDataSource}">
     <Window.Resources>
@@ -26,7 +26,7 @@
         <CollectionViewSource Source="{Binding}"
                               x:Key="key_international_project_view" Filter="CollectionViewSource_Filter"/>
     </Window.Resources>
-    <Grid>
+    <Grid Margin="1,0,-1,0">
         <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Name}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Surname}"/>
@@ -42,26 +42,25 @@
         </StackPanel>
         <ListBox
                      x:Name="allProjectsLBox"
-                     ItemsSource="{Binding Mode=OneWay}"
-                     ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="200" Margin="225,10,357,0"
+                     ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="450" Margin="225,10,357,0" ItemsSource="{DynamicResource key_MainDataSource}"
             />
-        <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="230" Margin="440,10,0,0" VerticalAlignment="Top" Width="210">
+        <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="221" Margin="435,239,0,0" VerticalAlignment="Top" Width="210">
             <ListBox x:Name="LocalListBox"
-                     HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210"
+                     HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="210"
                      ItemsSource="{Binding Source={StaticResource key_local_project_view}}"
-                     IsSynchronizedWithCurrentItem="True" ItemTemplate="{DynamicResource key_local_project_DataTemplate}"/>
+                     IsSynchronizedWithCurrentItem="True" ItemTemplate="{DynamicResource key_local_project_DataTemplate}" Margin="0"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap"
-                       Text="{Binding ElementName=LocalListBox, Path=SelectedItem.duration}"
+                       Text="{Binding SelectedItem.duration, ElementName=LocalListBox}"
                        VerticalAlignment="Top"/>
             <TextBlock TextWrapping="Wrap"
-                       Text="{Binding ElementName=LocalListBox, Path=SelectedItem.Date}"
-                       Height="24"/>
+                       Text="{Binding SelectedItem.Date, ElementName=LocalListBox}"
+                       Height="14"/>
         </StackPanel>
         <Button Content="Button" HorizontalAlignment="Left" Margin="117,224,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <ListBox x:Name="InternationalListBox"
-                HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="210"
+                HorizontalAlignment="Left" Height="224" VerticalAlignment="Top" Width="210"
                 ItemsSource="{Binding Source={StaticResource key_international_project_view}}"
-                IsSynchronizedWithCurrentItem="True" Margin="225,210,0,0"/>
+                IsSynchronizedWithCurrentItem="True" Margin="435,10,0,0"/>
 
     </Grid>
 </Window>

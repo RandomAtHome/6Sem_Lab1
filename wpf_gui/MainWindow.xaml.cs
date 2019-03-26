@@ -22,7 +22,7 @@ namespace wpf_gui
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ResearcherObservable Researcher { get; set; }
+        private ResearcherObservable researcher = null;
 
         public MainWindow()
         {
@@ -43,8 +43,7 @@ namespace wpf_gui
 
         void IsLocalProject(object sender, FilterEventArgs args)
         {
-            Project proj = args.Item as Project;
-            if (proj != null)
+            if (args.Item is Project proj)
             {
                 args.Accepted = proj is LocalProject ? true : false;
             }
@@ -52,14 +51,12 @@ namespace wpf_gui
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Researcher.AddDefaultLocalProject();
-            //(Resources["key_local_project_view"] as CollectionViewSource).View.Refresh();
+            researcher.AddDefaultLocalProject();
         }
 
         private void CollectionViewSource_Filter(object sender, FilterEventArgs args)
         {
-            Project proj = args.Item as Project;
-            if (proj != null)
+            if (args.Item is Project proj)
             {
                 args.Accepted = proj is InternationalProject ? true : false;
             }
@@ -67,16 +64,16 @@ namespace wpf_gui
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Researcher = FindResource("key_MainDataSource") as ResearcherObservable;
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultInternationalProject();
-            Researcher.AddDefaultLocalProject();
-            Researcher.AddDefaultInternationalProject();
+            researcher = FindResource("key_MainDataSource") as ResearcherObservable;
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultLocalProject();
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultLocalProject();
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultInternationalProject();
+            researcher.AddDefaultLocalProject();
+            researcher.AddDefaultInternationalProject();
         }
     }
 }

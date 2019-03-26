@@ -32,7 +32,7 @@ namespace class_library
             }
             return false;
         }
-        public ResearcherObservable(string name = "", string surname = "", double experience = 0.0) 
+        public ResearcherObservable(string name = "", string surname = "", double experience = 0.0)
         {
             Name = name;
             Surname = surname;
@@ -45,12 +45,12 @@ namespace class_library
 
         public bool AddDefaultLocalProject()
         {
-            Items.Add(new LocalProject("Loc. Default"));
+            this.Add(new LocalProject("Loc. Default"));
             return true;
         }
         public bool AddDefaultInternationalProject()
         {
-            Items.Add(new InternationalProject("Int. Default"));
+            this.Add(new InternationalProject("Int. Default"));
             return true;
         }
         public bool AddCustomInternationalProject(InternationalProject project)
