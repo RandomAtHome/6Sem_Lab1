@@ -12,6 +12,8 @@ namespace class_library
             this.country_host = country_host;
             this.participant_count = participant_count;
         }
+
+        public InternationalProject() : this("") { }
         public override string ToString()
         {
             string delim = "\n";

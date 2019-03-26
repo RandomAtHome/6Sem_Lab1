@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:wpf_gui"
         xmlns:classes="clr-namespace:class_library;assembly=class_library"
         xmlns:Properties="clr-namespace:wpf_gui.Properties"
@@ -13,6 +14,7 @@
         DataContext="{DynamicResource key_MainDataSource}">
     <Window.Resources>
         <classes:ResearcherObservable x:Key="key_MainDataSource"/>
+        <classes:InternationalProject x:Key="key_DummyProject"/>
         <local:ProjectConverter x:Key="key_ProjectConverter"/>
         <local:LocalProjectConverter x:Key="key_LocalProjectConverter"/>
         <DataTemplate x:Key="key_project_DataTemplate">
@@ -26,7 +28,7 @@
         <CollectionViewSource Source="{Binding}"
                               x:Key="key_international_project_view" Filter="CollectionViewSource_Filter"/>
     </Window.Resources>
-    <Grid Margin="1,0,-1,0">
+    <Grid>
         <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Name}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Surname}"/>
@@ -56,11 +58,28 @@
                        Text="{Binding SelectedItem.Date, ElementName=LocalListBox}"
                        Height="14"/>
         </StackPanel>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="117,224,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="225,465,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <ListBox x:Name="InternationalListBox"
                 HorizontalAlignment="Left" Height="224" VerticalAlignment="Top" Width="210"
                 ItemsSource="{Binding Source={StaticResource key_international_project_view}}"
                 IsSynchronizedWithCurrentItem="True" Margin="435,10,0,0"/>
+        <Grid Margin="10,223,572,207" >
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" RenderTransformOrigin="0.967,1.087" Width="210"/>
+            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Width="210" Margin="0,23,0,0"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="0,47,0,0" ItemsSource="{Binding Mode=OneWay}">
+                <ComboBox.DataContext>
+                    <ObjectDataProvider MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+                        <ObjectDataProvider.MethodParameters>
+                            <x:Type TypeName="classes:ProjectType"/>
+                        </ObjectDataProvider.MethodParameters>
+                    </ObjectDataProvider>
+                </ComboBox.DataContext>
+            </ComboBox>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="210" Margin="0,69,0,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Margin="0,91,0,0" HorizontalAlignment="Left" Width="210"/>
+
+        </Grid>
 
     </Grid>
 </Window>
