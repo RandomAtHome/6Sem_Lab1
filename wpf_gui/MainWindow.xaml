@@ -29,7 +29,7 @@
                               x:Key="key_international_project_view" Filter="CollectionViewSource_Filter"/>
     </Window.Resources>
     <Grid>
-        <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="210">
+        <StackPanel HorizontalAlignment="Left" Height="200" Margin="10,30,0,0" VerticalAlignment="Top" Width="210">
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Name}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Surname}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Experience}"/>
@@ -44,9 +44,9 @@
         </StackPanel>
         <ListBox
                      x:Name="allProjectsLBox"
-                     ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="469" Margin="225,10,357,0" ItemsSource="{DynamicResource key_MainDataSource}"
+                     ItemTemplate="{DynamicResource key_project_DataTemplate}" VerticalAlignment="Top" Height="469" Margin="225,30,357,0" ItemsSource="{DynamicResource key_MainDataSource}"
             />
-        <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="221" Margin="435,258,0,0" VerticalAlignment="Top" Width="210">
+        <StackPanel Name="LocalProjectElems" HorizontalAlignment="Left" Height="221" Margin="435,278,0,0" VerticalAlignment="Top" Width="210">
             <ListBox x:Name="LocalListBox"
                      HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="210"
                      ItemsSource="{Binding Source={StaticResource key_local_project_view}}"
@@ -58,12 +58,12 @@
                        Text="{Binding SelectedItem.Date, ElementName=LocalListBox}"
                        Height="14"/>
         </StackPanel>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="225,484,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="225,504,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <ListBox x:Name="InternationalListBox"
                 HorizontalAlignment="Left" Height="243" VerticalAlignment="Top" Width="210"
                 ItemsSource="{Binding Source={StaticResource key_international_project_view}}"
-                IsSynchronizedWithCurrentItem="True" Margin="435,10,0,0"/>
-        <Grid Margin="10,223,572,197" x:Name="NewProjDataInput">
+                IsSynchronizedWithCurrentItem="True" Margin="435,30,0,0"/>
+        <Grid Margin="10,286,572,134" x:Name="NewProjDataInput">
             <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"
                      Text="{Binding Path=Theme, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
                      VerticalAlignment="Top" RenderTransformOrigin="0.967,1.087" Width="200"/>
@@ -95,5 +95,18 @@
                     Click="AddNewIntProject"/>
 
         </Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File" Width="100">
+                <MenuItem Header="New"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Save"/>
+            </MenuItem>
+            <MenuItem Header="Edit" Width="100">
+                <MenuItem Header="Add Default LocalProject"/>
+                <MenuItem Header="Add Default InternationalProject"/>
+                <MenuItem Header="Add Custom InternationalProject"/>
+                <MenuItem Header="Remove"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
