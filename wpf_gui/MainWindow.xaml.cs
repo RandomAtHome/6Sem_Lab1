@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -96,7 +97,20 @@ namespace wpf_gui
         private void AddNewIntProject(object sender, RoutedEventArgs e)
         {
             InternationalProject proj_ref = FindResource("key_DummyProject") as InternationalProject;
+            foreach (FrameworkElement child in NewProjDataInput.Children)
+            {
+                if (Validation.GetHasError(child))
+                {
+                    return;
+                }
+            }
             researcher.AddCustomInternationalProject(new InternationalProject(proj_ref));
+        }
+
+        private void CheckInputNumber(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
