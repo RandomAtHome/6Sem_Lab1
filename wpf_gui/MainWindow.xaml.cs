@@ -68,15 +68,6 @@ namespace wpf_gui
         {
             researcher = FindResource("key_MainDataSource") as ResearcherObservable;
             CountryPicker.DataContext = GetListOfCountries();
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultLocalProject();
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultLocalProject();
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultInternationalProject();
-            researcher.AddDefaultLocalProject();
-            researcher.AddDefaultInternationalProject();
         }
 
         private List<string> GetListOfCountries()
@@ -94,8 +85,10 @@ namespace wpf_gui
             return result;
         }
 
-        private void AddNewIntProject(object sender, RoutedEventArgs e)
+        private void AddCustomIntProject_Click(object sender, RoutedEventArgs e)
         {
+            ThemeTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            ParticipantCount.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             InternationalProject proj_ref = FindResource("key_DummyProject") as InternationalProject;
             foreach (FrameworkElement child in NewProjDataInput.Children)
             {
@@ -112,5 +105,9 @@ namespace wpf_gui
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void AddDefaultLocal_Click(object sender, RoutedEventArgs e) => researcher.AddDefaultLocalProject();
+
+        private void AddDefaultIntProject_Click(object sender, RoutedEventArgs e) => researcher.AddDefaultInternationalProject();
     }
 }

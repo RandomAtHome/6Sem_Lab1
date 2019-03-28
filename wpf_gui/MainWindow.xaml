@@ -65,11 +65,12 @@
                 IsSynchronizedWithCurrentItem="True" Margin="435,30,0,0"/>
         <Grid Margin="10,286,572,134" x:Name="NewProjDataInput">
             <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"
-                     Text="{Binding Path=Theme, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
+                     x:Name="ThemeTextBox"
+                     Text="{Binding Path=Theme, Source={StaticResource key_DummyProject}, Mode=TwoWay}"
                      VerticalAlignment="Top" RenderTransformOrigin="0.967,1.087" Width="200"/>
             <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top"
                         HorizontalContentAlignment="Left" Width="200" Margin="0,23,0,0"
-                        SelectedDate="{Binding Path=Date, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
+                        SelectedDate="{Binding Path=Date, Source={StaticResource key_DummyProject}, Mode=TwoWay}"
                         FirstDayOfWeek="Monday"/>
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="0,47,0,0"
                       ItemsSource="{Binding Mode=OneWay}"
@@ -87,25 +88,25 @@
                       ItemsSource="{Binding}"
                       SelectedItem="{Binding Path=country_host, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}" SelectedIndex="0"/>
             <TextBox Height="23" x:Name="ParticipantCount" TextWrapping="Wrap"
-                     Text="{Binding Path=participant_count, Source={StaticResource key_DummyProject}, Mode=OneWayToSource, ValidatesOnExceptions=True}"
+                     Text="{Binding Path=participant_count, Source={StaticResource key_DummyProject}, Mode=TwoWay, ValidatesOnExceptions=True}"
                      VerticalAlignment="Top" Margin="0,91,0,0" HorizontalAlignment="Left"
                      PreviewTextInput="CheckInputNumber" Width="200"/>
             <Button Content="Add new Int. Project" HorizontalAlignment="Left"
                     VerticalAlignment="Top" Width="129" Margin="10,114,0,0"
-                    Click="AddNewIntProject"/>
+                    Click="AddCustomIntProject_Click"/>
 
         </Grid>
         <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="File" Width="100">
-                <MenuItem Header="New"/>
-                <MenuItem Header="Open"/>
-                <MenuItem Header="Save"/>
+            <MenuItem Header="_File" Width="100">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
             </MenuItem>
-            <MenuItem Header="Edit" Width="100">
-                <MenuItem Header="Add Default LocalProject"/>
-                <MenuItem Header="Add Default InternationalProject"/>
-                <MenuItem Header="Add Custom InternationalProject"/>
-                <MenuItem Header="Remove"/>
+            <MenuItem Header="_Edit" Width="100">
+                <MenuItem Header="Add Default _LocalProject" Click="AddDefaultLocal_Click"/>
+                <MenuItem Header="Add Default _InternationalProject" Click="AddDefaultIntProject_Click"/>
+                <MenuItem Header="Add _Custom InternationalProject" Click="AddCustomIntProject_Click"/>
+                <MenuItem Header="_Remove"/>
             </MenuItem>
         </Menu>
     </Grid>
