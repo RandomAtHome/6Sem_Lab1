@@ -13,6 +13,12 @@ namespace class_library
             this.participant_count = participant_count;
         }
 
+        public InternationalProject(InternationalProject project) : base(project.Theme, project.Type, project.Date)
+        {
+            country_host = project.country_host;
+            participant_count = project.participant_count;
+        }
+
         public InternationalProject() : this("") { }
         public override string ToString()
         {

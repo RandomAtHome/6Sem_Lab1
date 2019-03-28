@@ -14,10 +14,10 @@ namespace class_library
         public double Experience { get; set; }
         public double InternationalPercent {
             get {
-                return Items.Count != 0
-                    ? (from project in Items
+                return Count != 0
+                    ? (from project in this
                      where project is InternationalProject
-                     select project).Count() / Items.Count * 100
+                     select project).Count() / Count * 100
                     : 0.0;
             }
         }
@@ -25,7 +25,7 @@ namespace class_library
         public bool Remove_At(int index)
         {
             try {
-                Items.RemoveAt(index);
+                RemoveAt(index);
                 return true;
             } catch (Exception e){
                 //do something reasonable
@@ -45,17 +45,17 @@ namespace class_library
 
         public bool AddDefaultLocalProject()
         {
-            this.Add(new LocalProject("Loc. Default"));
+            Add(new LocalProject("Loc. Default"));
             return true;
         }
         public bool AddDefaultInternationalProject()
         {
-            this.Add(new InternationalProject("Int. Default"));
+            Add(new InternationalProject("Int. Default"));
             return true;
         }
         public bool AddCustomInternationalProject(InternationalProject project)
         {
-            Items.Add(project);
+            Add(project);
             return true;
         }
         public override string ToString()

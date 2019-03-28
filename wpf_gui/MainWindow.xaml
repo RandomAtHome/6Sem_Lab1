@@ -88,6 +88,7 @@
                       SelectedItem="{Binding Path=country_host, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Path=participant_count, Source={StaticResource key_DummyProject}, Mode=OneWayToSource}"
                      VerticalAlignment="Top" Margin="0,91,0,0" HorizontalAlignment="Left" Width="200"/>
+            <Button Content="Add new Int. Project" HorizontalAlignment="Left" VerticalAlignment="Top" Width="129" Margin="10,114,0,0" Click="AddNewIntProject"/>
 
         </Grid>
     </Grid>

@@ -92,5 +92,11 @@ namespace wpf_gui
             result.Sort();
             return result;
         }
+
+        private void AddNewIntProject(object sender, RoutedEventArgs e)
+        {
+            InternationalProject proj_ref = FindResource("key_DummyProject") as InternationalProject;
+            researcher.AddCustomInternationalProject(new InternationalProject(proj_ref));
+        }
     }
 }
