@@ -29,10 +29,6 @@ namespace wpf_gui
         public MainWindow()
         {
             InitializeComponent();
-            //ListCollectionView listCollectionView = Resources["key_local_project_view"] as ListCollectionView;
-            //listCollectionView.Filter = item => { return item != null && item is LocalProject; };
-            //LocalListBox.ItemsSource = listCollectionView;
-
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -67,6 +63,7 @@ namespace wpf_gui
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             researcher = FindResource("key_MainDataSource") as ResearcherObservable;
+            //this.DataContext = researcher;
             CountryPicker.DataContext = GetListOfCountries();
         }
 

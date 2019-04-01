@@ -33,8 +33,8 @@
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Name}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Surname}"/>
             <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Experience}"/>
-            <TextBlock TextWrapping="Wrap" Text="{Binding InternationalPercent, Mode=OneWay}"/>
-            <TextBlock TextWrapping="Wrap" Text="{Binding HasChanged}"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding InternationalPercent}"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding HasChanged, Mode=OneWay}"/>
             <RadioButton Content="Use DataTemplate"
                          GroupName="AllProjectsTemplate"
                          Checked="RadioButton_Checked" IsChecked="True"/>
