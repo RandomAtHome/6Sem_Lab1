@@ -152,7 +152,7 @@ namespace wpf_gui
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
+                MessageBox.Show("Exception: " + ex.Message);
             }
             finally
             {
@@ -169,12 +169,13 @@ namespace wpf_gui
             {
                 fs = File.OpenRead(filename);
                 BinaryFormatter bf = new BinaryFormatter();
-                researcher = bf.Deserialize(fs) as ResearcherObservable;
+                Resources["key_MainDataSource"] = bf.Deserialize(fs) as ResearcherObservable;
+                researcher = FindResource("key_MainDataSource") as ResearcherObservable;
                 result = true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
+                MessageBox.Show("Exception: " + ex.Message);
             }
             finally
             {
@@ -196,7 +197,7 @@ namespace wpf_gui
                 try
                 {
                     researcher.HasChanged = false;
-                    Save(dg.SafeFileName);
+                    Save(dg.FileName);
                 }
                 catch (Exception)
                 {
