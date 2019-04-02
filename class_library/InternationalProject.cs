@@ -2,6 +2,7 @@
 
 namespace class_library
 {
+    [Serializable]
     public class InternationalProject : Project, IComparable<InternationalProject>
     {
         public string country_host { set; get; }

@@ -2,6 +2,7 @@
 
 namespace class_library
 {
+    [Serializable]
     public class LocalProject : Project
     {
         public double duration { set; get; }

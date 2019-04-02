@@ -13,22 +13,19 @@ namespace class_library
     public class ResearcherObservable : System.Collections.ObjectModel.ObservableCollection<Project>
     {
         private bool _hasChanged;
+        private string _name;
+        private string _surname;
+        private double _experience;
 
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public double Experience { get; set; }
+        public string Name { get => _name; set => _name = value; }
+        public string Surname { get => _surname; set => _surname = value; }
+        public double Experience { get => _experience; set => _experience = value; }
 
-        public double InternationalPercent
-        {
-            get
-            {
-                return Count != 0
+        public double InternationalPercent => Count != 0
                     ? (double)(from project in this
-                       where project is InternationalProject
-                       select project).Count() / Count * 100
+                               where project is InternationalProject
+                               select project).Count() / Count * 100
                     : 0.0;
-            }
-        }
         public bool HasChanged
         {
             get => _hasChanged;
@@ -56,7 +53,8 @@ namespace class_library
         }
         public ResearcherObservable(string name = "", string surname = "", double experience = 0.0)
         {
-            CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) => {
+            CollectionChanged += (object sender, NotifyCollectionChangedEventArgs e) =>
+            {
                 HasChanged = true;
                 OnPropertyChanged(new PropertyChangedEventArgs("InternationalPercent"));
             };

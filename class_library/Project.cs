@@ -3,6 +3,8 @@
 namespace class_library
 {
     public enum ProjectType { Applied, Fundamental };
+
+    [Serializable]
     public class Project : IComparable<Project>
     {
         public string Theme { get; set; }
