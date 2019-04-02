@@ -45,7 +45,7 @@ namespace class_library
                 RemoveAt(index);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //do something reasonable
             }
@@ -70,6 +70,7 @@ namespace class_library
         public bool AddDefaultLocalProject()
         {
             Add(new LocalProject("Loc. Default"));
+            Add(new LocalProject("Loc. Default", ProjectType.Fundamental, new DateTime(1992, 12, 5)));
             return true;
         }
         public bool AddDefaultInternationalProject()
@@ -84,7 +85,14 @@ namespace class_library
         }
         public override string ToString()
         {
-            return base.ToString();
+            string result = "";
+            result = Name + " " + Surname + " Experience:" + Experience.ToString() + "\n";
+            result += "Percentage: " + InternationalPercent.ToString() + "\n";
+            foreach (var item in Items)
+            {
+                result += item.ToString() + "\n";
+            }
+            return result;
         }
     }
 }
